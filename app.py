@@ -23,10 +23,10 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 # ---------------- DB CONNECTION FUNCTION ----------------
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="1234",
-        database="ngo_db"
+        host=os.getenv("MYSQLHOST"),
+        user=os.getenv("MYSQLUSER"),
+        password=os.getenv("MYSQLPASSWORD"),
+        database=os.getenv("MYSQLDATABASE")
     )
 
 
