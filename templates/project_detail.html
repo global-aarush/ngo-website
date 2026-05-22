@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ project.title }} - Sahyog India</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #17211c;
+      --muted: #66756d;
+      --paper: #fbfaf5;
+      --soft: #f2efe6;
+      --green: #116149;
+      --green-deep: #0b3d30;
+      --amber: #f5b84b;
+      --line: rgba(23, 33, 28, 0.13);
+      --shadow: 0 20px 60px rgba(16, 32, 26, 0.1);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--green);
+      font-weight: 900;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--green);
+      font-weight: 800;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      align-items: stretch;
+      margin-bottom: 22px;
+    }
+
+    .hero-image {
+      min-height: 560px;
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, rgba(7, 20, 16, 0.08), rgba(7, 20, 16, 0.55)),
+        url("{{ project.image }}") center/cover;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 14px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #7b5500;
+      background: rgba(245,184,75,0.22);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      line-height: 0.95;
+      font-weight: 800;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .summary {
+      font-size: 1.05rem;
+      margin-bottom: 22px;
+    }
+
+    .progress {
+      height: 11px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e7e2d7;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      width: {{ project.progress }}%;
+      background: linear-gradient(90deg, var(--green), var(--amber));
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 12px 0 22px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--green);
+      font-weight: 800;
+    }
+
+    .btn.secondary {
+      color: var(--green);
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .stat {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .stat span {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--green);
+      font-size: 1.45rem;
+      line-height: 1;
+    }
+
+    .details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h2 {
+      margin: 0 0 10px;
+      font-size: 1.3rem;
+    }
+
+    .panel ul {
+      margin: 14px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .panel li {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .details {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-image {
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .panel {
+        padding: 22px;
+      }
+
+      .actions .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="top">
+      <a class="brand" href="/">
+        <span class="brand-mark">S</span>
+        <span>Sahyog India</span>
+      </a>
+
+      <a class="back" href="/projects">Back to projects</a>
+    </header>
+
+    <section class="hero">
+      <div class="hero-image"></div>
+
+      <div class="hero-card">
+        <span class="tag">{{ project.category }} · {{ project.urgency }}</span>
+        <h1>{{ project.title }}</h1>
+        <p class="summary">{{ project.summary }}</p>
+
+        <div class="progress"><span></span></div>
+        <div class="meta">
+          <span>{{ project.raised }} raised</span>
+          <span>{{ project.goal }} goal</span>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="/dashboard">Donate now</a>
+          <a class="btn secondary" href="/volunteer">Volunteer</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="stat">
+        <span>Funding progress</span>
+        <strong>{{ project.progress }}%</strong>
+      </article>
+
+      <article class="stat">
+        <span>Volunteers needed</span>
+        <strong>{{ project.volunteers }}</strong>
+      </article>
+
+      <article class="stat">
+        <span>Impact estimate</span>
+        <strong>{{ project.impact }}</strong>
+      </article>
+
+      <article class="stat">
+        <span>Status</span>
+        <strong>{{ project.urgency }}</strong>
+      </article>
+    </section>
+
+    <section class="details">
+      <article class="panel">
+        <h2>What this project supports</h2>
+        <p>{{ project.summary }}</p>
+        <ul>
+          <li>Verified campaign planning and field coordination</li>
+          <li>Transparent donation tracking and project updates</li>
+          <li>Volunteer support for on-ground execution</li>
+          <li>Impact reporting after key milestones</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2>AI impact insight</h2>
+        <p>{{ project.impact }}</p>
+        <ul>
+          <li>Best for donors who want measurable impact</li>
+          <li>Useful for volunteers who can support outreach</li>
+          <li>Recommended when urgency is high or funding gap is active</li>
+          <li>Progress is tracked through Sahyog India reports</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

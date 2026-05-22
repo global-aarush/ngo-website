@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Volunteer Registered - Sahyog India</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #17211c;
+      --muted: #66756d;
+      --paper: #fbfaf5;
+      --green: #116149;
+      --green-deep: #0b3d30;
+      --amber: #f5b84b;
+      --line: rgba(23, 33, 28, 0.13);
+      --shadow: 0 24px 70px rgba(16, 32, 26, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(7,20,16,0.86), rgba(7,20,16,0.44)),
+        url("https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1600&q=82") center/cover;
+    }
+
+    .card {
+      width: min(100%, 560px);
+      padding: 34px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.96);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .icon {
+      width: 66px;
+      height: 66px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 20px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--green);
+      font-size: 2rem;
+      font-weight: 900;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .event {
+      margin: 20px 0;
+      padding: 16px;
+      border-radius: 8px;
+      color: var(--green);
+      background: #eef7f1;
+      font-weight: 900;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--green);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .btn.secondary {
+      color: var(--green);
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .btn:hover {
+      background: var(--green-deep);
+      color: #fff;
+    }
+
+    @media (max-width: 520px) {
+      .card {
+        padding: 26px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <div class="icon">✓</div>
+
+    <h1>You’re registered</h1>
+
+    <p>Your volunteer registration has been saved successfully. Sahyog India can now coordinate your participation for this event.</p>
+
+    <div class="event">
+      {{ event_name }}
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="/dashboard">Back to dashboard</a>
+      <a class="btn secondary" href="/events">View more events</a>
+    </div>
+  </main>
+</body>
+</html>

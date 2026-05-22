@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard - Sahyog India</title>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #17211c;
+      --muted: #66756d;
+      --paper: #fbfaf5;
+      --soft: #f2efe6;
+      --green: #116149;
+      --green-deep: #0b3d30;
+      --amber: #f5b84b;
+      --coral: #e66c4f;
+      --red: #d94444;
+      --line: rgba(23, 33, 28, 0.13);
+      --shadow: 0 24px 70px rgba(16, 32, 26, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 24px;
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(7, 20, 16, 0.92), rgba(7, 20, 16, 0.82)),
+        url("https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=82") center/cover;
+      border-right: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 34px;
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: var(--green);
+      background: #fff;
+      font-weight: 900;
+    }
+
+    .side-label {
+      margin: 0 0 10px;
+      color: rgba(255, 255, 255, 0.56);
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .side-nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .side-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 0 12px;
+      border-radius: 8px;
+      color: rgba(255, 255, 255, 0.82);
+      font-weight: 700;
+      transition: background 180ms ease, color 180ms ease;
+    }
+
+    .side-link:hover,
+    .side-link.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .side-icon {
+      width: 22px;
+      text-align: center;
+    }
+
+    .sidebar-card {
+      margin-top: 34px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(14px);
+    }
+
+    .sidebar-card strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 1rem;
+    }
+
+    .sidebar-card p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.86rem;
+    }
+
+    .logout {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border-radius: 8px;
+      color: #fff;
+      background: rgba(217, 68, 68, 0.92);
+      font-weight: 800;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .logout:hover {
+      transform: translateY(-2px);
+      background: var(--red);
+    }
+
+    .main {
+      min-width: 0;
+      padding: 28px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .topbar h1 {
+      margin: 0 0 6px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .topbar p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 40px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font-size: 0.88rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: var(--green);
+    }
+
+    .hero-card {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      margin-bottom: 24px;
+      padding: 28px;
+      border-radius: 10px;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(11, 61, 48, 0.96), rgba(11, 61, 48, 0.7)),
+        url("https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1400&q=82") center/cover;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card h2 {
+      max-width: 620px;
+      margin: 0 0 12px;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      line-height: 1.02;
+      font-weight: 800;
+    }
+
+    .hero-card p {
+      max-width: 560px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-stat {
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1;
+      color: #fff;
+    }
+
+    .hero-stat span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .content-stack {
+      display: grid;
+      gap: 24px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 14px 40px rgba(16, 32, 26, 0.07);
+      overflow: hidden;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 22px 22px 0;
+    }
+
+    .card-header h2 {
+      margin: 0 0 6px;
+      font-size: 1.24rem;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .card-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .card-body {
+      padding: 22px;
+    }
+
+    .donation-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .amount-field {
+      position: relative;
+    }
+
+    .currency {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    input {
+      width: 100%;
+      min-height: 52px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: #fff;
+      outline: none;
+      transition: border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .amount-field input {
+      padding-left: 38px;
+      font-weight: 800;
+    }
+
+    input::placeholder {
+      color: #9aa59f;
+      font-weight: 500;
+    }
+
+    input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 4px rgba(17, 97, 73, 0.12);
+    }
+
+    .amount-options {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .amount-chip {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--green);
+      background: #f8f7f1;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .amount-chip:hover {
+      border-color: var(--green);
+      background: #eef7f1;
+    }
+
+    .primary-btn {
+      min-height: 52px;
+      border: 0;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--green);
+      box-shadow: 0 14px 34px rgba(17, 97, 73, 0.22);
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-2px);
+      background: var(--green-deep);
+      box-shadow: 0 18px 42px rgba(17, 97, 73, 0.28);
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .quick-action {
+      min-height: 126px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfaf5;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .quick-action:hover {
+      transform: translateY(-3px);
+      border-color: rgba(17, 97, 73, 0.35);
+      background: #f2efe6;
+    }
+
+    .quick-action span {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 14px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--green);
+      font-weight: 900;
+    }
+
+    .quick-action strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.98rem;
+    }
+
+    .quick-action small {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .history-list {
+      display: grid;
+      gap: 12px;
+      max-height: 560px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .history-item {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfaf5;
+    }
+
+    .history-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .amount {
+      color: var(--green);
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+
+    .date {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .impact {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .status {
+      display: inline-flex;
+      margin-top: 10px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      color: #7b5500;
+      background: rgba(245, 184, 75, 0.22);
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .empty-state {
+      padding: 22px;
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      color: var(--muted);
+      background: #fbfaf5;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .footer {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    @media (max-width: 1120px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: relative;
+        height: auto;
+      }
+
+      .side-nav {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .sidebar-card,
+      .logout {
+        position: static;
+        margin-top: 18px;
+      }
+
+      .dashboard-grid,
+      .hero-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .main {
+        padding: 18px;
+      }
+
+      .sidebar {
+        padding: 20px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .side-nav,
+      .quick-grid,
+      .amount-options,
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .card-body,
+      .card-header {
+        padding: 20px;
+      }
+
+      .history-top {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="/dashboard">
+        <span class="brand-mark">S</span>
+        <span>Sahyog India</span>
+      </a>
+
+      <p class="side-label">Workspace</p>
+      <nav class="side-nav" aria-label="Dashboard navigation">
+        <a class="side-link active" href="/dashboard">
+          <span class="side-icon">⌂</span>
+          Dashboard
+        </a>
+        <a class="side-link" href="/projects">
+          <span class="side-icon">◆</span>
+          Projects
+        </a>
+        <a class="side-link" href="/volunteer">
+          <span class="side-icon">✚</span>
+          Volunteer
+        </a>
+        <a class="side-link" href="/events">
+          <span class="side-icon">◷</span>
+          Events
+        </a>
+        <a class="side-link" href="/report">
+          <span class="side-icon">▣</span>
+          Reports
+        </a>
+      </nav>
+
+      <div class="sidebar-card">
+        <strong>Verified impact</strong>
+        <p>Every donation is connected to campaign updates, field activity, and measurable outcomes.</p>
+      </div>
+
+      <a class="logout" href="/logout">Logout</a>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1>User Dashboard</h1>
+          <p>Support campaigns, volunteer for missions, and track your contribution history.</p>
+        </div>
+
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          Active supporter
+        </div>
+      </header>
+
+      <section class="hero-card">
+        <div>
+          <h2>Your contribution helps verified missions move faster.</h2>
+          <p>
+            Donate securely through Razorpay and follow how your support turns into food, education, healthcare, and relief work.
+          </p>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>10K+</strong>
+            <span>Volunteers</span>
+          </div>
+          <div class="hero-stat">
+            <strong>500+</strong>
+            <span>NGO partners</span>
+          </div>
+          <div class="hero-stat">
+            <strong>1M+</strong>
+            <span>Lives reached</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="dashboard-grid">
+        <div class="content-stack">
+          <section class="card">
+            <div class="card-header">
+              <div>
+                <h2>Support NGO</h2>
+                <p>Choose an amount or enter your own donation value.</p>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="donation-form">
+                <div class="amount-field">
+                  <span class="currency">₹</span>
+                  <input type="number" id="donationAmount" required placeholder="Enter donation amount" min="1" />
+                </div>
+
+                <div class="amount-options">
+                  <button type="button" class="amount-chip" data-amount="250">₹250</button>
+                  <button type="button" class="amount-chip" data-amount="500">₹500</button>
+                  <button type="button" class="amount-chip" data-amount="1000">₹1,000</button>
+                  <button type="button" class="amount-chip" data-amount="2500">₹2,500</button>
+                </div>
+
+                <button type="button" id="razorpayDonateBtn" class="primary-btn">
+                  Donate securely
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <div>
+                <h2>Quick Actions</h2>
+                <p>Jump into the most common supporter workflows.</p>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="quick-grid">
+                <a class="quick-action" href="/projects">
+                  <span>P</span>
+                  <strong>Projects</strong>
+                  <small>Explore verified campaigns</small>
+                </a>
+
+                <a class="quick-action" href="/volunteer">
+                  <span>V</span>
+                  <strong>Volunteer</strong>
+                  <small>Find local opportunities</small>
+                </a>
+
+                <a class="quick-action" href="/events">
+                  <span>E</span>
+                  <strong>Events</strong>
+                  <small>Join upcoming drives</small>
+                </a>
+
+                <a class="quick-action" href="/report">
+                  <span>R</span>
+                  <strong>Reports</strong>
+                  <small>Review impact updates</small>
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="card">
+          <div class="card-header">
+            <div>
+              <h2>Donation History</h2>
+              <p>Your latest contribution records.</p>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="history-list">
+              {% for d in donations %}
+              <div class="history-item">
+                <div class="history-top">
+                  <span class="amount">₹{{ d.amount }}</span>
+                  <span class="date">{{ d.date if d.date else '' }}</span>
+                </div>
+
+                <p class="impact">Impact: {{ d.impact }}</p>
+
+                {% if d.status %}
+                <span class="status">Status: {{ d.status }}</span>
+                {% endif %}
+              </div>
+              {% else %}
+              <div class="empty-state">
+                No donations yet. Your first contribution will appear here.
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="footer">
+        © 2026 Sahyog India. Making impact measurable.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const amountInput = document.getElementById("donationAmount");
+    const amountChips = document.querySelectorAll(".amount-chip");
+
+    amountChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        amountInput.value = chip.dataset.amount;
+        amountInput.focus();
+      });
+    });
+
+    const donateBtn = document.getElementById("razorpayDonateBtn");
+
+    donateBtn.addEventListener("click", async function () {
+      const amount = amountInput.value;
+
+      if (!amount || amount <= 0) {
+        alert("Please enter a valid donation amount");
+        return;
+      }
+
+      const orderResponse = await fetch("/create_razorpay_order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ amount: amount })
+      });
+
+      const orderData = await orderResponse.json();
+
+      if (!orderResponse.ok) {
+        alert(orderData.error || "Unable to create payment order");
+        return;
+      }
+
+      const options = {
+        key: orderData.key_id,
+        amount: orderData.amount,
+        currency: orderData.currency,
+        name: "Sahyog India",
+        description: "Donation",
+        order_id: orderData.order_id,
+
+        handler: async function (response) {
+          const verifyResponse = await fetch("/verify_razorpay_payment", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(response)
+          });
+
+          const verifyData = await verifyResponse.json();
+
+          if (verifyData.success) {
+            alert("Donation successful. Thank you!");
+            window.location.href = "/dashboard";
+          } else {
+            alert("Payment verification failed");
+          }
+        },
+
+        theme: {
+          color: "#116149"
+        }
+      };
+
+      const rzp = new Razorpay(options);
+      rzp.open();
+    });
+  </script>
+</body>
+</html>
