@@ -618,7 +618,7 @@ def get_impact(amount):
     amount = int(amount)
 
     if amount <= 100:
-        return "1 meal provide ho sakta hai"
+        return "1 meal support"
 
     elif amount <= 500:
         return "5 meals + basic support"
