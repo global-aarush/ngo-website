@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Done bhai. Ye full professional `index.html` code apne VS Code mein paste kar de:
 
 ```html
@@ -864,3 +865,867 @@ Done bhai. Ye full professional `index.html` code apne VS Code mein paste kar de
 </body>
 </html>
 ```
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sahyog India</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #17211c;
+      --muted: #5f6f67;
+      --paper: #fbfaf5;
+      --paper-soft: #f2efe6;
+      --green: #116149;
+      --green-deep: #0b3d30;
+      --amber: #f5b84b;
+      --coral: #e66c4f;
+      --line: rgba(23, 33, 28, 0.13);
+      --shadow: 0 24px 70px rgba(16, 32, 26, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255,255,255,0.16);
+      background: rgba(12,28,23,0.72);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      color: #fff;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 180ms ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      color: #fff;
+      background: var(--green);
+      box-shadow: 0 14px 34px rgba(17,97,73,0.28);
+    }
+
+    .btn-light {
+      color: #11241d;
+      background: #fff;
+    }
+
+    .btn-outline {
+      color: #fff;
+      border-color: rgba(255,255,255,0.32);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero {
+      min-height: 92vh;
+      position: relative;
+      display: grid;
+      align-items: end;
+      padding: 126px 0 64px;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(7,20,16,0.92) 0%, rgba(7,20,16,0.72) 44%, rgba(7,20,16,0.3) 100%),
+        url("https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1800&q=82") center/cover;
+    }
+
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) 0.72fr;
+      gap: 54px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 11px;
+      border: 1px solid rgba(255,255,255,0.24);
+      border-radius: 999px;
+      color: rgba(255,255,255,0.84);
+      background: rgba(255,255,255,0.08);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--amber);
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 770px;
+      margin: 22px 0;
+      font-size: clamp(3.2rem, 7vw, 6.6rem);
+      line-height: 0.92;
+      font-weight: 800;
+    }
+
+    .hero-copy {
+      max-width: 640px;
+      margin-bottom: 30px;
+      color: rgba(255,255,255,0.78);
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .impact-panel {
+      border-radius: 8px;
+      background: rgba(255,255,255,0.94);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-image {
+      height: 230px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .panel-body { padding: 24px; }
+
+    .panel-body h2 {
+      margin-bottom: 8px;
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+
+    .panel-body p {
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .progress {
+      height: 10px;
+      border-radius: 99px;
+      overflow: hidden;
+      background: #e8e4d9;
+    }
+
+    .progress span {
+      display: block;
+      width: 76%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--amber));
+    }
+
+    .panel-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .metrics-band {
+      padding: 22px 0;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--line);
+    }
+
+    .metric {
+      padding: 24px;
+      background: #fff;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: clamp(1.8rem, 3vw, 2.55rem);
+      line-height: 1;
+      color: var(--green);
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .section { padding: 92px 0; }
+    .section-muted { background: var(--paper-soft); }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 34px;
+      margin-bottom: 36px;
+    }
+
+    .section-kicker {
+      margin-bottom: 10px;
+      color: var(--coral);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .section h2 {
+      margin-bottom: 0;
+      font-size: clamp(2rem, 4vw, 3.55rem);
+      line-height: 1.02;
+      max-width: 690px;
+    }
+
+    .section-head p {
+      max-width: 430px;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .cause-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .cause-card {
+      min-height: 390px;
+      position: relative;
+      display: flex;
+      align-items: end;
+      overflow: hidden;
+      border-radius: 8px;
+      color: #fff;
+      background: #111;
+      box-shadow: 0 18px 48px rgba(20,30,24,0.16);
+    }
+
+    .cause-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 400ms ease;
+    }
+
+    .cause-card:hover img { transform: scale(1.06); }
+
+    .cause-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.78));
+    }
+
+    .cause-content {
+      position: relative;
+      z-index: 1;
+      padding: 24px;
+    }
+
+    .cause-content span {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .cause-content h3 {
+      margin-bottom: 8px;
+      font-size: 1.35rem;
+      line-height: 1.2;
+    }
+
+    .cause-content p {
+      margin-bottom: 0;
+      color: rgba(255,255,255,0.78);
+      font-size: 0.94rem;
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: 0.86fr 1fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .workflow-media {
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .workflow-media img {
+      width: 100%;
+      height: 610px;
+      object-fit: cover;
+    }
+
+    .steps {
+      display: grid;
+      gap: 16px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .step-number {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--green);
+      font-weight: 800;
+    }
+
+    .step h3 {
+      margin-bottom: 6px;
+      font-size: 1.12rem;
+    }
+
+    .step p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .quote-layout {
+      display: grid;
+      grid-template-columns: 0.82fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .quote-card {
+      padding: 34px;
+      border-radius: 8px;
+      background: var(--green-deep);
+      color: #fff;
+    }
+
+    .quote-card blockquote {
+      margin: 0 0 26px;
+      font-size: clamp(1.45rem, 3vw, 2.45rem);
+      line-height: 1.13;
+      font-weight: 800;
+    }
+
+    .quote-card p {
+      margin-bottom: 0;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .story {
+      padding: 24px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .story strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+
+    .story p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .cta {
+      padding: 74px 0;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(11,61,48,0.95), rgba(11,61,48,0.7)),
+        url("https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1600&q=82") center/cover;
+    }
+
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .cta h2 {
+      max-width: 720px;
+      margin-bottom: 12px;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1;
+    }
+
+    .cta p {
+      max-width: 590px;
+      margin-bottom: 0;
+      color: rgba(255,255,255,0.76);
+    }
+
+    footer {
+      padding: 28px 0;
+      color: var(--muted);
+      background: #fff;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 0.92rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    @media (max-width: 940px) {
+      .nav {
+        min-height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links,
+      .nav-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .hero { padding-top: 170px; }
+
+      .hero-inner,
+      .workflow,
+      .quote-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-inner {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .impact-panel { max-width: 520px; }
+
+      .metrics,
+      .cause-grid,
+      .story-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, 1160px);
+      }
+
+      .nav-links {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      .nav-actions .btn { flex: 1; }
+
+      .hero {
+        min-height: auto;
+        padding: 168px 0 44px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 16vw, 4.4rem);
+      }
+
+      .hero-actions .btn { width: 100%; }
+
+      .metrics,
+      .cause-grid,
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metric,
+      .step,
+      .story,
+      .quote-card {
+        padding: 20px;
+      }
+
+      .cause-card { min-height: 330px; }
+
+      .workflow-media img { height: 390px; }
+
+      .step { grid-template-columns: 1fr; }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#">
+        <span class="brand-mark">S</span>
+        <span>Sahyog India</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#causes">Causes</a>
+        <a href="#platform">Platform</a>
+        <a href="#impact">Impact</a>
+        <a href="#stories">Stories</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-outline" href="/login">Login</a>
+        <a class="btn btn-light" href="/register">Join now</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="eyebrow">Verified giving and volunteering</div>
+          <h1>Sahyog India</h1>
+          <p class="hero-copy">
+            A modern impact platform that connects donors, volunteers, and nonprofit teams with transparent campaigns, measurable outcomes, and fast community action.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-light" href="/register">Start contributing</a>
+            <a class="btn btn-outline" href="#impact">View impact</a>
+          </div>
+        </div>
+
+        <aside class="impact-panel">
+         <img
+            class="panel-image"
+            src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=900&q=82"
+            alt="Volunteers packing food donations"
+          />
+
+          <div class="panel-body">
+            <h2>Community food relief drive</h2>
+            <p>Funding meals, essentials, and field logistics for verified local partners this month.</p>
+
+            <div class="progress"><span></span></div>
+
+            <div class="panel-row">
+              <span>76% funded</span>
+              <span>18 days left</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="metrics-band" id="impact">
+      <div class="container metrics">
+        <div class="metric">
+          <strong>10K+</strong>
+          <span>Active volunteers</span>
+        </div>
+        <div class="metric">
+          <strong>500+</strong>
+          <span>Partner NGOs</span>
+        </div>
+        <div class="metric">
+          <strong>1M+</strong>
+          <span>People supported</span>
+        </div>
+        <div class="metric">
+          <strong>92%</strong>
+          <span>Campaign transparency score</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="causes">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Priority causes</div>
+            <h2>Focused programs built for visible, local progress.</h2>
+          </div>
+          <p>
+            Sahyog India helps teams organize campaigns by need, location, urgency, and trusted field partners so support reaches the right place faster.
+          </p>
+        </div>
+
+        <div class="cause-grid">
+          <article class="cause-card">
+            <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=82" alt="Children studying" />
+            <div class="cause-content">
+              <span>Education</span>
+              <h3>Learning access for every child</h3>
+              <p>Support classrooms, school kits, mentoring, and digital learning programs.</p>
+            </div>
+          </article>
+
+          <article class="cause-card">
+            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=82" alt="Healthcare support" />
+            <div class="cause-content">
+              <span>Healthcare</span>
+              <h3>Care where it is needed most</h3>
+              <p>Enable medical camps, medicine access, and preventive health outreach.</p>
+            </div>
+          </article>
+
+          <article class="cause-card">
+            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=900&q=82" alt="Food donation volunteers" />
+            <div class="cause-content">
+              <span>Relief</span>
+              <h3>Rapid support during urgent needs</h3>
+              <p>Coordinate donations, supplies, and volunteers for relief operations.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="platform">
+      <div class="container workflow">
+        <div class="workflow-media">
+          <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=950&q=82" alt="Volunteers coordinating work" />
+        </div>
+
+        <div>
+          <div class="section-kicker">How it works</div>
+          <h2>One platform for action, tracking, and trust.</h2>
+
+          <div class="steps">
+            <article class="step">
+              <div class="step-number">01</div>
+              <div>
+                <h3>NGOs publish verified missions</h3>
+                <p>Organizations create campaigns with goals, budget needs, locations, and progress updates.</p>
+              </div>
+            </article>
+
+            <article class="step">
+              <div class="step-number">02</div>
+              <div>
+                <h3>People contribute with clarity</h3>
+                <p>Donors and volunteers choose the cause, task, or amount that matches their capacity.</p>
+              </div>
+            </article>
+
+            <article class="step">
+              <div class="step-number">03</div>
+              <div>
+                <h3>Impact becomes measurable</h3>
+                <p>Dashboards surface field updates, milestone completion, receipts, and outcome reporting.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="stories">
+      <div class="container quote-layout">
+        <article class="quote-card">
+          <blockquote>“People trust the work when they can see where every effort goes.”</blockquote>
+          <p>Sahyog India turns scattered support into organized, accountable community progress.</p>
+        </article>
+
+        <div class="story-grid">
+          <article class="story">
+            <strong>4.8x</strong>
+            <p>Faster volunteer placement through location-aware campaign matching.</p>
+          </article>
+
+          <article class="story">
+            <strong>38K</strong>
+            <p>Meals distributed through partner-led relief programs last quarter.</p>
+          </article>
+
+          <article class="story">
+            <strong>120</strong>
+            <p>Health camps coordinated with community workers and local clinics.</p>
+          </article>
+
+          <article class="story">
+            <strong>8,500</strong>
+            <p>Students supported with learning supplies, scholarships, and mentorship.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-inner">
+        <div>
+          <h2>Build a stronger network of help.</h2>
+          <p>Join Sahyog India to fund verified missions, volunteer with purpose, and help nonprofit teams show real impact.</p>
+        </div>
+
+        <a class="btn btn-light" href="/register">Join the mission</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Sahyog India. Built for transparent community impact.</span>
+
+      <div class="footer-links">
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+>>>>>>> f8714dd (Initial commit by mac)

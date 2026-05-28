@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -534,3 +535,541 @@
   </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reports - Sahyog India</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #17211c;
+      --muted: #66756d;
+      --paper: #fbfaf5;
+      --soft: #f2efe6;
+      --green: #116149;
+      --green-deep: #0b3d30;
+      --amber: #f5b84b;
+      --coral: #e66c4f;
+      --line: rgba(23, 33, 28, 0.13);
+      --shadow: 0 18px 50px rgba(16, 32, 26, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--green);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .summary-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .summary-card span {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .summary-card strong {
+      display: block;
+      color: var(--green);
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .chart-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .mission-panel {
+      margin-top: 18px;
+    }
+
+    .panel-head {
+      padding: 20px 22px 0;
+    }
+
+    .panel-head h2 {
+      margin: 0 0 6px;
+      font-size: 1.22rem;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .panel-head p {
+      font-size: 0.92rem;
+    }
+
+    .chart-box {
+      height: 330px;
+      padding: 20px 22px 22px;
+    }
+
+    .chart-box.small {
+      height: 330px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 780px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 16px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      background: #fbfaf5;
+      font-size: 0.76rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    td {
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .amount {
+      color: var(--green);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .status {
+      display: inline-flex;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: #0b3d30;
+      background: #dff2e7;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .mission-status {
+      background: rgba(245, 184, 75, 0.22);
+      color: #7b5500;
+    }
+
+    .empty {
+      padding: 34px;
+      color: var(--muted);
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .message-cell {
+      max-width: 260px;
+      color: #3f5148;
+    }
+
+    @media (max-width: 900px) {
+      .summary-grid,
+      .chart-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .chart-grid .panel:first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .summary-grid,
+      .chart-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .chart-box,
+      .chart-box.small {
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="top">
+      <div>
+        <h1>{{ user.name if user and user.name else 'Impact' }} Reports</h1>
+        <p>
+          Animated donation analytics, impact breakdown, verified payments, and joined mission reports.
+        </p>
+      </div>
+
+      <a class="btn" href="/dashboard">Back to dashboard</a>
+    </header>
+
+    <section class="summary-grid">
+      <article class="summary-card">
+        <span>Total donated</span>
+        <strong id="totalAmount">₹0</strong>
+      </article>
+
+      <article class="summary-card">
+        <span>Paid donations</span>
+        <strong id="donationCount">0</strong>
+      </article>
+
+      <article class="summary-card">
+        <span>Joined missions</span>
+        <strong id="missionCount">{{ volunteer_reports|length if volunteer_reports else 0 }}</strong>
+      </article>
+
+      <article class="summary-card">
+        <span>Highest donation</span>
+        <strong id="highestAmount">₹0</strong>
+      </article>
+    </section>
+
+    <section class="chart-grid">
+      <article class="panel">
+        <div class="panel-head">
+          <h2>Donation Trend</h2>
+          <p>Paid contribution movement over recent records.</p>
+        </div>
+        <div class="chart-box">
+          <canvas id="trendChart"></canvas>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <h2>Impact Split</h2>
+          <p>How contributions translate into support categories.</p>
+        </div>
+        <div class="chart-box small">
+          <canvas id="impactChart"></canvas>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Verified Payment Records</h2>
+        <p>Only successful Razorpay payments are listed here.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              {% if user and user.role == 'admin' %}
+              <th>User</th>
+              {% endif %}
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Impact</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for r in reports %}
+            <tr>
+              {% if user and user.role == 'admin' %}
+              <td>
+                {{ r.user_name if r.user_name else 'User' }}<br />
+                <small>{{ r.user_email if r.user_email else '' }}</small>
+              </td>
+              {% endif %}
+
+              <td class="amount">₹{{ r.amount }}</td>
+              <td>{{ r.date if r.date else '' }}</td>
+              <td>{{ r.impact }}</td>
+              <td><span class="status">{{ r.status }}</span></td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="5">
+                <div class="empty">No paid reports found yet.</div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel mission-panel">
+      <div class="panel-head">
+        <h2>Joined Mission Reports</h2>
+        <p>Volunteer events and missions registered through Sahyog India.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              {% if user and user.role == 'admin' %}
+              <th>User</th>
+              {% endif %}
+              <th>Event</th>
+              <th>Interest</th>
+              <th>Availability</th>
+              <th>Phone</th>
+              <th>Message</th>
+              <th>Joined On</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for v in volunteer_reports %}
+            <tr>
+              {% if user and user.role == 'admin' %}
+              <td>
+                {{ v.user_name if v.user_name else 'User' }}<br />
+                <small>{{ v.user_email if v.user_email else '' }}</small>
+              </td>
+              {% endif %}
+
+              <td>{{ v.event_name if v.event_name else 'General volunteering' }}</td>
+              <td>{{ v.interest if v.interest else '' }}</td>
+              <td>{{ v.availability if v.availability else '' }}</td>
+              <td>{{ v.phone if v.phone else '' }}</td>
+              <td class="message-cell">{{ v.message if v.message else '' }}</td>
+              <td>{{ v.created_at if v.created_at else '' }}</td>
+              <td><span class="status mission-status">joined</span></td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="8">
+                <div class="empty">No joined missions found yet.</div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const reports = [
+      {% for r in reports %}
+      {
+        amount: Number("{{ r.amount }}"),
+        date: "{{ r.date if r.date else 'No date' }}",
+        impact: "{{ r.impact }}",
+        status: "{{ r.status }}"
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ];
+
+    const paidReports = reports.filter((item) => item.status === "paid");
+    const amounts = paidReports.map((item) => item.amount);
+    const total = amounts.reduce((sum, amount) => sum + amount, 0);
+    const highest = amounts.length ? Math.max(...amounts) : 0;
+
+    document.getElementById("totalAmount").textContent = "₹" + total.toLocaleString("en-IN");
+    document.getElementById("donationCount").textContent = paidReports.length;
+    document.getElementById("highestAmount").textContent = "₹" + highest.toLocaleString("en-IN");
+
+    const labels = paidReports.map((item, index) => item.date || "Donation " + (index + 1));
+
+    const impactBuckets = {
+      "Meals": 0,
+      "Education": 0,
+      "Ration": 0,
+      "Long-term": 0,
+      "Basic support": 0
+    };
+
+    paidReports.forEach((item) => {
+      const impact = item.impact.toLowerCase();
+
+      if (impact.includes("education")) {
+        impactBuckets["Education"] += item.amount;
+      } else if (impact.includes("ration")) {
+        impactBuckets["Ration"] += item.amount;
+      } else if (impact.includes("long-term") || impact.includes("multiple")) {
+        impactBuckets["Long-term"] += item.amount;
+      } else if (impact.includes("meal")) {
+        impactBuckets["Meals"] += item.amount;
+      } else {
+        impactBuckets["Basic support"] += item.amount;
+      }
+    });
+
+    new Chart(document.getElementById("trendChart"), {
+      type: "bar",
+      data: {
+        labels: labels,
+        datasets: [{
+          label: "Donation amount",
+          data: amounts,
+          backgroundColor: "#116149",
+          borderRadius: 8,
+          maxBarThickness: 44
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: {
+          duration: 1200,
+          easing: "easeOutQuart"
+        },
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: (value) => "₹" + value
+            }
+          },
+          x: {
+            ticks: {
+              maxRotation: 0,
+              autoSkip: true,
+              maxTicksLimit: 6
+            }
+          }
+        }
+      }
+    });
+
+    new Chart(document.getElementById("impactChart"), {
+      type: "doughnut",
+      data: {
+        labels: Object.keys(impactBuckets),
+        datasets: [{
+          data: Object.values(impactBuckets),
+          backgroundColor: ["#116149", "#f5b84b", "#e66c4f", "#0b3d30", "#8fb9a4"],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: "68%",
+        animation: {
+          animateRotate: true,
+          duration: 1300
+        },
+        plugins: {
+          legend: {
+            position: "bottom",
+            labels: {
+              usePointStyle: true,
+              boxWidth: 8,
+              font: {
+                family: "Inter",
+                weight: "700"
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+>>>>>>> f8714dd (Initial commit by mac)

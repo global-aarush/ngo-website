@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -458,4 +459,466 @@
       `linear-gradient(180deg, rgba(7, 20, 16, 0.1), rgba(7, 20, 16, 0.62)), url("${selected.image}")`;
   </script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Volunteer - Sahyog India</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #17211c;
+      --muted: #66756d;
+      --paper: #fbfaf5;
+      --soft: #f2efe6;
+      --green: #116149;
+      --green-deep: #0b3d30;
+      --amber: #f5b84b;
+      --line: rgba(23, 33, 28, 0.13);
+      --shadow: 0 18px 50px rgba(16, 32, 26, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      font-weight: 800;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border: 0;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--green);
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn:hover { background: var(--green-deep); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .event-card,
+    .form-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .event-image {
+      min-height: 320px;
+      background:
+        linear-gradient(180deg, rgba(7, 20, 16, 0.1), rgba(7, 20, 16, 0.62)),
+        url("https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=82") center/cover;
+    }
+
+    .event-body,
+    .form-body {
+      padding: 26px;
+    }
+
+    .label {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--green);
+      background: #eef7f1;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .event-body p {
+      margin-bottom: 18px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .info {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfaf5;
+    }
+
+    .info span {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .info strong {
+      color: var(--green);
+      font-size: 0.95rem;
+    }
+
+    .impact-box {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 8px;
+      color: #3f5148;
+      background: var(--soft);
+      font-weight: 700;
+    }
+
+    .form-card h2 {
+      margin-bottom: 8px;
+      font-size: 1.8rem;
+    }
+
+    .form-card p {
+      margin-bottom: 22px;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 50px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: #fff;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 110px;
+      padding-top: 12px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 4px rgba(17, 97, 73, 0.12);
+    }
+
+    .submit {
+      width: 100%;
+      min-height: 52px;
+      border: 0;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--green);
+      box-shadow: 0 14px 34px rgba(17, 97, 73, 0.22);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .submit:hover {
+      background: var(--green-deep);
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .event-body,
+      .form-body {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="top">
+      <div>
+        <h1>Volunteer</h1>
+        <p>Register for an event and help Sahyog India turn plans into real field action.</p>
+      </div>
+
+      <a class="btn" href="/events">Back to events</a>
+    </header>
+
+    <section class="layout">
+      <article class="event-card">
+        <div class="event-image" id="eventImage"></div>
+
+        <div class="event-body">
+          <span class="label" id="eventCategory">Selected event</span>
+          <h2 id="eventTitle">Choose an event</h2>
+          <p id="eventDescription">Open this page from an event card to see the full event information here.</p>
+
+          <div class="info-grid">
+            <div class="info">
+              <span>Date</span>
+              <strong id="eventDate">Upcoming</strong>
+            </div>
+
+            <div class="info">
+              <span>Time</span>
+              <strong id="eventTime">To be announced</strong>
+            </div>
+
+            <div class="info">
+              <span>Location</span>
+              <strong id="eventLocation">Sahyog India Center</strong>
+            </div>
+
+            <div class="info">
+              <span>Slots</span>
+              <strong id="eventSlots">Limited</strong>
+            </div>
+          </div>
+
+          <div class="impact-box" id="eventImpact">
+            Your time helps with coordination, community outreach, and direct support.
+          </div>
+        </div>
+      </article>
+
+      <article class="form-card">
+        <div class="form-body">
+          <span class="label">Volunteer registration</span>
+          <h2>Join this mission</h2>
+          <p>Submit your details and selected event interest. The team can use this to coordinate your participation.</p>
+
+          <form method="POST" action="/volunteer">
+            <input type="hidden" id="selectedEvent" name="event_name" value="General volunteering" />
+
+            <div class="field">
+              <label for="name">Full name</label>
+              <input id="name" type="text" name="name" placeholder="Enter your name" required />
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input id="phone" type="tel" name="phone" placeholder="Enter your phone number" required />
+            </div>
+
+            <div class="field">
+              <label for="interest">Volunteer interest</label>
+              <select id="interest" name="interest" required>
+                <option value="Food relief">Food relief</option>
+                <option value="Healthcare support">Healthcare support</option>
+                <option value="Education support">Education support</option>
+                <option value="Environment work">Environment work</option>
+                <option value="Skill support">Skill support</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="availability">Availability</label>
+              <select id="availability" name="availability" required>
+                <option value="Weekend">Weekend</option>
+                <option value="Weekday">Weekday</option>
+                <option value="Remote">Remote</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us how you want to help"></textarea>
+            </div>
+
+            <button class="submit" type="submit">Register as volunteer</button>
+          </form>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const events = {
+      "food-relief": {
+        title: "Food Relief Packing Drive",
+        category: "Food relief",
+        description: "Help prepare, sort, and distribute essential food kits for families needing immediate support this month.",
+        date: "24 May",
+        time: "10:00 AM - 2:00 PM",
+        location: "Community Hall",
+        slots: "24 available",
+        impact: "You will help pack ration kits, manage distribution batches, and support families with urgent food needs.",
+        interest: "Food relief",
+        image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=82"
+      },
+      "health-camp": {
+        title: "Mobile Health Camp",
+        category: "Healthcare",
+        description: "Support patient registration, queue management, and health awareness outreach during the medical camp.",
+        date: "28 May",
+        time: "9:00 AM - 1:00 PM",
+        location: "Sector 12 Clinic",
+        slots: "12 available",
+        impact: "You will help patients move smoothly through checkups and support preventive healthcare awareness.",
+        interest: "Healthcare support",
+        image: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=82"
+      },
+      "learning-kit": {
+        title: "Learning Kit Distribution",
+        category: "Education",
+        description: "Help distribute learning kits and support a short mentoring session for students.",
+        date: "02 Jun",
+        time: "11:00 AM - 3:00 PM",
+        location: "Sunrise School",
+        slots: "18 available",
+        impact: "You will help children receive study materials and encourage them through mentoring support.",
+        interest: "Education support",
+        image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=1200&q=82"
+      },
+      "plantation": {
+        title: "Green City Plantation",
+        category: "Environment",
+        description: "Join plantation work, site setup, and local awareness outreach.",
+        date: "08 Jun",
+        time: "7:30 AM - 11:30 AM",
+        location: "Riverfront Park",
+        slots: "35 available",
+        impact: "You will support tree planting, area setup, and community environment awareness.",
+        interest: "Environment work",
+        image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=82"
+      },
+      "women-workshop": {
+        title: "Women Skill Workshop",
+        category: "Skill support",
+        description: "Assist mentors with training, registration, and community support.",
+        date: "12 Jun",
+        time: "12:00 PM - 4:00 PM",
+        location: "Skill Center",
+        slots: "16 available",
+        impact: "You will support mentoring, registration, training flow, and participant guidance.",
+        interest: "Skill support",
+        image: "https://images.unsplash.com/photo-1573497019236-17f8177b81e8?auto=format&fit=crop&w=1200&q=82"
+      },
+      "ration-drive": {
+        title: "Family Ration Distribution",
+        category: "Food relief",
+        description: "Support token checks, kit handover, and field coordination.",
+        date: "16 Jun",
+        time: "9:30 AM - 1:30 PM",
+        location: "North Zone Center",
+        slots: "20 available",
+        impact: "You will help families collect monthly ration kits with organized and respectful distribution.",
+        interest: "Food relief",
+        image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=82"
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const eventKey = params.get("event") || "food-relief";
+    const selected = events[eventKey] || events["food-relief"];
+
+    document.getElementById("eventTitle").textContent = selected.title;
+    document.getElementById("eventCategory").textContent = selected.category;
+    document.getElementById("eventDescription").textContent = selected.description;
+    document.getElementById("eventDate").textContent = selected.date;
+    document.getElementById("eventTime").textContent = selected.time;
+    document.getElementById("eventLocation").textContent = selected.location;
+    document.getElementById("eventSlots").textContent = selected.slots;
+    document.getElementById("eventImpact").textContent = selected.impact;
+    document.getElementById("selectedEvent").value = selected.title;
+    document.getElementById("interest").value = selected.interest;
+    document.getElementById("eventImage").style.backgroundImage =
+      `linear-gradient(180deg, rgba(7, 20, 16, 0.1), rgba(7, 20, 16, 0.62)), url("${selected.image}")`;
+  </script>
+</body>
+>>>>>>> f8714dd (Initial commit by mac)
 </html>
